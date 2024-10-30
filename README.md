@@ -11,3 +11,6 @@ O projeto final consiste no desenvolvimento de um banco de dados completo, com t
 - **Criação de Views**: Definição de visões específicas no banco de dados.
 - **Criação de Stored Procedures**: Procedimentos armazenados para execução de operações.
 - **Criação de Triggers**: Gatilhos para execução automática de ações.
+
+## Modelo do Banco
+![Representação do banco de dados relacional do projeto](ProjetoBD.png)
