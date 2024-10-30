@@ -10,7 +10,7 @@ create table recursoshumanos.tb_funcionarios (
 	nome 				varchar(80),
 	cpf 				varchar(11),
 	data_contratacao 	date,
-	salario 			integer,
+	salario 			numeric(10,2),
 	constraint pk_id_funcionario primary key (id_funcionario),
 	foreign key (id_cargo) references recursoshumanos.tb_cargos(id_cargo)
 );
