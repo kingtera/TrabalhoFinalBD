@@ -21,12 +21,14 @@ insert into admbanco.tb_acessosusuarios(id_acesso, id_funcionario, id_grupo_perm
 --SCHEMA PROJETOS
 INSERT INTO projetos.tb_clientes (id_cliente, email, nm_cliente, cnpj)
 VALUES
-    (1, 'contato@empresaA.com', 'Empresa A', '12345678000195'),
-    (2, 'suporte@empresaB.com', 'Empresa B', '23456789000106'),
-    (3, 'adm@empresaC.com', 'Empresa C', '34567890000117'),
-    (4, 'projetos@empresaD.com', 'Empresa D', '45678901000188');
-    (5, 'contato@empresaE.com', 'Empresa E', '56789012000199');
+    (1, 'contato@empresaA.com', 'Empresa A', '11223344000155'),
+    (2, 'suporte@empresaB.com', 'Empresa B', '22334455000166'),
+    (3, 'adm@empresaC.com', 'Empresa C', '33445566000177'),
+    (4, 'projetos@empresaD.com', 'Empresa D', '44556677000188'),
+    (5, 'contato@empresaE.com', 'Empresa E', '55667788000199');
 
+   update projetos.tb_clientes set nm_cliente = 'Empresa E' where id_cliente = 5;
+   
 INSERT INTO projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status)
 VALUES
     (1, 1, 12, 'Sistema de Gestão', 150000.00, '2022-06-12', '2022-08-15', 'C'),
@@ -82,8 +84,8 @@ VALUES
     
 INSERT INTO recursoshumanos.tb_funcionarios (id_funcionario, id_cargo, nome, cpf, data_contratacao, salario)
 VALUES
-	(1, 1, 	'Fernanda de Carvalho Pinto', 	'524.224.176-47', '2022-05-12', 10000.00), -- Sócio
-	(2, 1, 	'Eduardo Yamaguti Teranisi',  	'321.644.536-46', '2022-05-12', 10000.00), -- Sócio
+	  (1, 1, 	'Fernanda de Carvalho Pinto', 	'524.224.176-47', '2022-05-12', 10000.00), -- Sócio
+	  (2, 1, 	'Eduardo Yamaguti Teranisi',  	'321.644.536-46', '2022-05-12', 10000.00), -- Sócio
     (3, 2, 	'João Silva', 				 	'813.926.686-89', '2022-05-12', 9000.00), -- Gerente
     (4, 12,	'Ana Lima', 					'542.437.166-33', '2022-05-12', 3000.00), -- Auxiliar Ti
     (5, 4, 	'Paula Roberta', 			 	'227.517.516-44', '2023-09-20', 9000.00), -- Gerente
