@@ -19,6 +19,8 @@ create table projetos.tb_projetos(
 	foreign key (id_gerente_projeto) references recursoshumanos.tb_funcionarios(id_funcionario)	
 );
 
+alter table projetos.tb_projetos add column status char(1);
+
 create table projetos.tb_tarefas(
 	id_tarefa 		int,
 	id_funcionario  int,
@@ -32,6 +34,8 @@ create table projetos.tb_tarefas(
 	foreign key (id_projeto) references projetos.tb_projetos(id_projeto)
 );
 
+alter table projetos.tb_tarefas add column data_conclusao date;
+
 create table projetos.tb_custos_projetos(
 	id_custo int,
 	id_projeto int,
@@ -42,7 +46,7 @@ create table projetos.tb_custos_projetos(
 	foreign key (id_projeto) references projetos.tb_projetos(id_projeto)
 );
 
-create table projetos.projeto_funcionario (
+create table projetos.tb_projeto_funcionario (
 	id_prj_func 	int,
 	id_funcionario	int,
 	id_projeto 		int,
@@ -51,8 +55,10 @@ create table projetos.projeto_funcionario (
 	foreign key (id_projeto) references projetos.tb_projetos(id_projeto)
 );
 
-
-
+create table projetos.tb_status_projetos(
+	status char(1),
+	descricao varchar(50)
+);
 
 
 

@@ -6,6 +6,8 @@ create table admbanco.tb_permissoes(
 	foreign key (id_cargo) references recursoshumanos.tb_cargos(id_cargo)
 );
 
+alter table admbanco.tb_permissoes drop column id_cargo;
+
 create table admbanco.tb_acessosusuarios(
 	id_acesso int,
 	id_funcionario int,
