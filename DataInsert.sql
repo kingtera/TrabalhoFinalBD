@@ -1,135 +1,121 @@
 --SCHEMA ADMBANCO
--- INSERT INTO admbanco.tb_permissoes (id_acesso, id_funcionario, id_grupo_permissao)
--- VALUES
---     (1,1,1),
---     (2,2,1),
---     (3,3,1),
---     (4,4,1),
---     (5,5,1),
---     (6,6,1),
---     (7,7,1),
---     (8,8,1),
---     (9,9,1),
---     (10,10,1),
---     (11,11,1),
---     (12,12,1),
---     (13,13,1),
---     (14,14,1),
---     (15,15,1),
---     (16,16,1);
+insert into admbanco.tb_permissoes (id_permissao, descricao) values
+	(1, 'Admin, acesso total ao banco, todos os comandos incluidos'),
+	(2, 'Desenvolvedor, só não é permitido o comando de delete'),
+	(3, 'Visualizador, pode ver todo o banco mas apenas executa comando select');
 
-
-INSERT INTO admbanco.tb_permissoes (id_permissao, id_cargo, descricao)
-VALUES
-    (1, 1, 'Acesso aos schemas projetos e a tabela de informações de funcionários no projeto'),     -- (1, 'Gerente de projeto')
-    (2, 2, 'Acesso as tarefas atribuídas no schema projetos'),                                      -- (2, 'Analista'),
-    (3, 3, 'Acesso ao schema projetos'),                                                            -- (3, 'Desenvolvedor'),
-    (4, 4, 'Acesso as tarefas atribuídas no schema projetos'),                                      -- (4, 'Auxiliar Administrativo'),
-    (5, 5, 'Acesso aos schemas rh e financiero'),                                                   -- (5, 'Gerente de RH'),
-    (6, 6, 'Acesso as tarefas atribuídas no schema projetos');                                      -- (6, 'Estagiário');
-
-
-
---SCHEMA FINANCEIRO
-INSERT INTO financeiro.tb_pagamentos (id_pagamento, id_funcionario, data_pagamento, valor)
-VALUES
-    (1, 1, '2023-08-31', 8500.00),  -- Pagamento para João Silva
-    (2, 2, '2023-08-31', 6000.00),  -- Pagamento para Maria Oliveira
-    (3, 3, '2023-08-31', 5500.00),  -- Pagamento para Carlos Sousa
-    (4, 4, '2023-08-31', 3000.00),  -- Pagamento para Ana Lima
-    (5, 5, '2023-08-31', 9000.00),  -- Pagamento para Paulo Roberto
-    (6, 6, '2023-08-31', 6200.00),  -- Pagamento para Fernanda Castro
-    (7, 7, '2023-08-31', 5700.00),  -- Pagamento para Bruno Mendes
-    (8, 8, '2023-08-31', 5800.00),  -- Pagamento para Cláudia Ramos
-    (9, 9, '2023-08-31', 3200.00),  -- Pagamento para Gustavo Pereira
-    (10, 10, '2023-08-31', 3100.00); -- Pagamento para Camila Santos
-
-
-
+insert into admbanco.tb_acessosusuarios(id_acesso, id_funcionario, id_grupo_permissao) values
+	(1, 1, 1),
+	(2, 1, 1),
+	(3, 1, 3),
+	(4, 1, 3),
+	(5, 1, 3),
+	(6, 1, 3),
+	(7, 1, 2),
+	(8, 1, 2),
+	(9, 1, 3),
+	(10, 1, 3),
+	(11, 1, 1),
+	(12, 1, 2);
+	
 --SCHEMA PROJETOS
 INSERT INTO projetos.tb_clientes (id_cliente, email, nm_cliente, cnpj)
 VALUES
-    (1, 'contato@empresaA.com', 'Empresa A', '12345678000195'),
-    (2, 'suporte@empresaB.com', 'Empresa B', '23456789000106'),
-    (3, 'adm@empresaC.com', 'Empresa C', '34567890000117'),
-    (4, 'projetos@empresaD.com', 'Empresa D', '45678901000188'),
-    (5, 'contato@empresaE.com', 'Empresa E', '56789012000199');
+    (1, 'contato@empresaA.com', 'Empresa A', '11223344000155'),
+    (2, 'suporte@empresaB.com', 'Empresa B', '22334455000166'),
+    (3, 'adm@empresaC.com', 'Empresa C', '33445566000177'),
+    (4, 'projetos@empresaD.com', 'Empresa D', '44556677000188'),
+    (5, 'contato@empresaE.com', 'Empresa E', '55667788000199');
 
-INSERT INTO projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim)
+   update projetos.tb_clientes set nm_cliente = 'Empresa E' where id_cliente = 5;
+   
+INSERT INTO projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status)
 VALUES
-    (1, 1, 1, 'Sistema de Gestão', 150000.00, '2023-01-10', '2023-12-30'),
-    (2, 2, 5, 'Aplicativo Mobile', 85000.00, '2023-03-01', '2023-09-30'),
-    (3, 3, 1, 'E-commerce', 120000.00, '2023-04-15', '2023-12-15'),
-    (4, 4, 2, 'Sistema de Automação', 200000.00, '2023-05-20', '2024-02-28'), -- Novo projeto
-    (5, 5, 5, 'Plataforma de E-learning', 95000.00, '2023-06-01', '2024-01-15'); -- Novo projeto
+    (1, 1, 12, 'Sistema de Gestão', 150000.00, '2022-06-12', '2022-08-15', 'C'),
+    (2, 2, 5, 'Aplicativo Mobile', 85000.00, '2023-07-01', '2023-10-20', 'C'),
+    (3, 3, 8, 'E-commerce', 120000.00, '2023-12-05', '2024-12-05', 'A'),
+    (4, 4, 9, 'Sistema de Automação', 200000.00, '2023-11-20', '2024-11-20', 'A'),
+    (5, 5, 7, 'Plataforma de E-learning', 95000.00, '2024-12-01', '2025-12-01', 'P');
 
+   
 INSERT INTO projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim)
 VALUES
-    (1, 3, 1, 'Desenvolver módulo de vendas', 'A', '2023-02-01', '2023-03-15'), -- Carlos Sousa
-    (2, 7, 1, 'Implementar integrações', 'A', '2023-03-01', '2023-05-20'), -- Bruno Mendes
-    (3, 4, 2, 'Documentar requisitos', 'F', '2023-03-05', '2023-04-10'), -- Ana Lima
-    (4, 8, 3, 'Desenvolver API de pagamentos', 'A', '2023-04-20', '2023-06-30'), -- Cláudia Ramos
-    (5, 9, 2, 'Testes de funcionalidade', 'A', '2023-06-01', '2023-07-15'), -- Gustavo Pereira
-    (6, 7, 4, 'Desenvolver sistema de controle', 'A', '2023-06-05', '2023-09-20'), -- Bruno Mendes, projeto 4
-    (7, 2, 4, 'Planejar arquitetura do sistema', 'A', '2023-05-25', '2023-07-15'), -- Fernanda Castro, projeto 4
-    (8, 5, 5, 'Desenvolver plataforma de cursos', 'A', '2023-06-15', '2023-11-30'), -- Paulo Roberto, projeto 5
-    (9, 6, 5, 'Testar funcionalidades da plataforma', 'A', '2023-08-01', '2023-12-01'); -- Fernanda Castro, projeto 5
+    (1, 9, 	1, 'Definir fluxos de aprovação', 						'C', '2022-06-12', '2022-08-15'), 
+    (2, 3, 	1, 'Implementar relatórios financeiros', 				'C', '2023-07-01', '2023-10-20'), 
+    (3, 7, 	2, 'Criar interface de login', 							'C', '2023-08-05', '2023-10-05'), 
+    (4, 8, 	2, 'Desenvolver integração com notificações push', 		'C', '2023-08-20', '2023-10-20'), 
+    (5, 12, 3, 'Configurar gateway de pagamento', 					'A', '2024-09-01', '2024-12-01'), 
+    (6, 8, 	3, 'Implementar sistema de recomendação de produtos', 	'A', '2024-10-20', '2024-12-05'),
+    (7, 10, 4, 'Programar disparos de tarefas', 					'A', '2024-09-20', '2026-11-05'),
+    (8, 10, 4, 'Configurar alertas automáticos', 					'P', '2025-03-05', '2026-03-05'),
+    (9, 4, 	5, 'Criar módulo de avaliação', 						'P', '2025-03-05', '2026-03-05'),
+    (10, 11, 5, 'Desenvolver painel de progresso do aluno', 		'P', '2025-03-05', '2026-03-05');
 
+update projetos.tb_tarefas set status = 'C' where id_tarefa = 5;
+   
 INSERT INTO projetos.tb_custos_projetos (id_custo, id_projeto, descricao, valor, data)
 VALUES
-    (1, 1, 'Licenças de software', 5000.00, '2023-02-15'),
-    (2, 2, 'Equipamentos', 10000.00, '2023-03-10'),
+    (1, 1, 'Licenças de software', 5000.00, '2022-06-15'),
+    (2, 2, 'Equipamentos', 10000.00, '2022-12-10'),
     (3, 3, 'Serviços de nuvem', 7000.00, '2023-05-01'),
-    (4, 4, 'Equipamentos de automação', 15000.00, '2023-06-10'), -- Custo para o projeto 4
-    (5, 5, 'Serviços de hospedagem', 5000.00, '2023-07-01'); -- Custo para o projeto 5
+    (4, 4, 'Equipamentos de automação', 15000.00, '2024-03-10'), -- Custo para o projeto 4
+    (5, 5, 'Serviços de hospedagem', 5000.00, '2024-07-01'); -- Custo para o projeto 5
 
-INSERT INTO projetos.projeto_funcionario (id_prj_func, id_funcionario, id_projeto)
-VALUES
-    (1, 3, 1), -- Carlos Sousa no projeto 1
-    (2, 7, 1), -- Bruno Mendes no projeto 1
-    (3, 4, 2), -- Ana Lima no projeto 2
-    (4, 8, 3), -- Cláudia Ramos no projeto 3
-    (5, 9, 2), -- Gustavo Pereira no projeto 2
-    (6, 7, 4), -- Bruno Mendes no projeto 4
-    (7, 2, 4), -- Fernanda Castro no projeto 4
-    (8, 5, 5), -- Paulo Roberto no projeto 5
-    (9, 6, 5); -- Fernanda Castro no projeto 5
-
-
-
+insert into projetos.tb_status_projetos (status, descricao) values
+	('P', 'Projetado, não está em execução no momento'),
+	('A', 'Ativo, ainda está em execução'),
+	('C', 'Concluído, já foi finalizado');
+    
 --SCHEMA RH
 INSERT INTO recursoshumanos.tb_cargos (id_cargo, descricao) 
 VALUES 
-    (1, 'Gerente de projeto'),
-    (2, 'Analista'),
-    (3, 'Desenvolvedor'),
-    (4, 'Auxiliar Administrativo'),
-    (5, 'Gerente de RH'),
-    (6, 'Estagiário');
-
+	(1,  'Sócio'),
+    (2,  'Gerente RH'),
+    (3,  'Gerente Ti'),
+    (4,  'Gerente Desenvolvimento'),
+    (5,  'Analista RH'),
+    (6,  'Analista Ti'),
+    (7,  'Analista Desenvolvimento'),
+    (8,  'Desenvolvedor'),
+    (9,  'Desenvolvedor Ti'),
+    (10, 'Auxiliar RH'),
+   	(11, 'Auxiliar Ti'),
+  	(12, 'Auxiliar Desenvolvimento');
+    
 INSERT INTO recursoshumanos.tb_funcionarios (id_funcionario, id_cargo, nome, cpf, data_contratacao, salario)
-VALUES 
-    (1, 1, 'João Silva', '12345678901', '2020-01-15', 8500.00), -- Gerente Projeto
-    (2, 2, 'Maria Oliveira', '23456789012', '2021-03-01', 6000.00), -- Analista
-    (3, 3, 'Carlos Sousa', '34567890123', '2022-05-12', 5500.00), -- Desenvolvedor
-    (4, 4, 'Ana Lima', '45678901234', '2023-07-10', 3000.00), -- Auxiliar Administrativo
-    (5, 1, 'Paulo Roberto', '56789012345', '2019-09-20', 9000.00), -- Gerente Projeto
-    (6, 2, 'Fernanda Castro', '67890123456', '2021-04-30', 6200.00), -- Analista
-    (7, 3, 'Bruno Mendes', '78901234567', '2022-06-05', 5700.00), -- Desenvolvedor
-    (8, 3, 'Cláudia Ramos', '89012345678', '2023-02-18', 5800.00), -- Desenvolvedor
-    (9, 4, 'Gustavo Pereira', '90123456789', '2023-08-15', 3200.00), -- Auxiliar Administrativo
-    (10, 4, 'Camila Santos', '01234567890', '2023-07-01', 3100.00), -- Auxiliar Administrativo
-    (11, 5, 'Julia Maria', '31415926509', '2021-06-01', 4000.00), -- Gerente RH
-    (12, 6, 'João Guilherme', '27182818284', '2023-10-01', 1200.00), -- Estagiário
-    (13, 6, 'Luis Antônio', '14142135623', '2023-10-01', 1200.00), -- Estagiário
-    (14, 6, 'Maria Fernanda', '16180339887', '2023-10-01', 1200.00), -- Estagiário
-    (15, 1, 'Elaine Cristina', '10120230344', '2023-01-01', 9000.00), -- Gerente Projeto
-    (16, 1, 'Valentina Santos', '45454545454', '2022-10-01', 9000.00); -- Gerente Projeto
-
-
+VALUES
+	  (1, 1, 	'Fernanda de Carvalho Pinto', 	'524.224.176-47', '2022-05-12', 10000.00), -- Sócio
+	  (2, 1, 	'Eduardo Yamaguti Teranisi',  	'321.644.536-46', '2022-05-12', 10000.00), -- Sócio
+    (3, 2, 	'João Silva', 				 	'813.926.686-89', '2022-05-12', 9000.00), -- Gerente
+    (4, 12,	'Ana Lima', 					'542.437.166-33', '2022-05-12', 3000.00), -- Auxiliar Ti
+    (5, 4, 	'Paula Roberta', 			 	'227.517.516-44', '2023-09-20', 9000.00), -- Gerente
+    (6, 7, 	'Fernanda Castro', 			 	'883.683.026-92', '2022-05-12', 4000.00), -- Analista Desenvolvimento
+    (7, 9,	'Bruno Mendes', 				'324.428.946-02', '2022-05-12', 8000.00), -- Desenvolvedor Ti
+    (8, 8, 	'Cláudia Ramos', 			 	'739.074.486-34', '2023-02-18', 8000.00), -- Desenvolvedor
+    (9, 5,  'Gustavo Pereira', 			 	'975.523.536-19', '2024-08-15', 4000.00), -- Analista RH
+    (10, 12,'Camila Santos', 			 	'524.275.326-90', '2023-07-01', 3000.00), -- Auxiliar Desenvolvimento
+    (11, 3, 'Maria Oliveira', 			 	'885.337.296-69', '2024-03-01', 9000.00), -- Gerente
+    (12, 8, 'Carlos Sousa', 			 	'281.918.866-42', '2024-05-12', 8000.00); -- Desenvolvedor
 
 INSERT INTO recursoshumanos.tb_departamentos (id_departamento, id_gerente_departamento, nm_deparmento)
-VALUES 
-    (1, 11, 'Recursos Humanos'),  
-    (2, 15, 'TI'),                
-    (3, 16, 'Desenvolvimento');
+VALUES
+    (1, 3, 'Recursos Humanos'),  -- João Silva como gerente
+    (2, 11, 'TI'),                -- Maria Oliveira como gerente
+    (3, 12, 'Desenvolvimento');    -- Paula Roberta como gerente
+    
+--SCHEMA FINANCEIRO
+INSERT INTO financeiro.tb_pagamentos (id_pagamento, id_funcionario, data_pagamento, valor)
+VALUES
+    (1, 1, '2024-10-05', 10000.00),  
+    (2, 2, '2024-10-05', 10000.00),  
+    (3, 3, '2024-10-05', 9000.00),  
+    (4, 4, '2024-10-05', 3000.00),  
+    (5, 5, '2024-10-05', 9000.00),  
+    (6, 6, '2024-10-05', 4000.00),  
+    (7, 7, '2024-10-05', 8000.00),  
+    (8, 8, '2024-10-05', 8000.00),  
+    (9, 9, '2024-10-05', 4000.00),  
+    (10, 10, '2024-10-05', 3000.00),
+    (11, 10, '2024-10-05', 9000.00),
+    (12, 10, '2024-10-05', 8000.00); 
+    
