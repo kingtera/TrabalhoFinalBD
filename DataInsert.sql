@@ -1,5 +1,34 @@
 --SCHEMA ADMBANCO
---FALTA INSERIR DADOS AQUI
+-- INSERT INTO admbanco.tb_permissoes (id_acesso, id_funcionario, id_grupo_permissao)
+-- VALUES
+--     (1,1,1),
+--     (2,2,1),
+--     (3,3,1),
+--     (4,4,1),
+--     (5,5,1),
+--     (6,6,1),
+--     (7,7,1),
+--     (8,8,1),
+--     (9,9,1),
+--     (10,10,1),
+--     (11,11,1),
+--     (12,12,1),
+--     (13,13,1),
+--     (14,14,1),
+--     (15,15,1),
+--     (16,16,1);
+
+
+INSERT INTO admbanco.tb_permissoes (id_permissao, id_cargo, descricao)
+VALUES
+    (1, 1, 'Acesso aos schemas projetos e a tabela de informações de funcionários no projeto'),     -- (1, 'Gerente de projeto')
+    (2, 2, 'Acesso as tarefas atribuídas no schema projetos'),                                      -- (2, 'Analista'),
+    (3, 3, 'Acesso ao schema projetos'),                                                            -- (3, 'Desenvolvedor'),
+    (4, 4, 'Acesso as tarefas atribuídas no schema projetos'),                                      -- (4, 'Auxiliar Administrativo'),
+    (5, 5, 'Acesso aos schemas rh e financiero'),                                                   -- (5, 'Gerente de RH'),
+    (6, 6, 'Acesso as tarefas atribuídas no schema projetos');                                      -- (6, 'Estagiário');
+
+
 
 --SCHEMA FINANCEIRO
 INSERT INTO financeiro.tb_pagamentos (id_pagamento, id_funcionario, data_pagamento, valor)
@@ -71,27 +100,36 @@ VALUES
 --SCHEMA RH
 INSERT INTO recursoshumanos.tb_cargos (id_cargo, descricao) 
 VALUES 
-    (1, 'Gerente'),
+    (1, 'Gerente de projeto'),
     (2, 'Analista'),
     (3, 'Desenvolvedor'),
-    (4, 'Auxiliar Administrativo');
+    (4, 'Auxiliar Administrativo'),
+    (5, 'Gerente de RH'),
+    (6, 'Estagiário');
 
 INSERT INTO recursoshumanos.tb_funcionarios (id_funcionario, id_cargo, nome, cpf, data_contratacao, salario)
 VALUES 
-    (1, 1, 'João Silva', '12345678901', '2020-01-15', 8500.00), -- Gerente
+    (1, 1, 'João Silva', '12345678901', '2020-01-15', 8500.00), -- Gerente Projeto
     (2, 2, 'Maria Oliveira', '23456789012', '2021-03-01', 6000.00), -- Analista
     (3, 3, 'Carlos Sousa', '34567890123', '2022-05-12', 5500.00), -- Desenvolvedor
     (4, 4, 'Ana Lima', '45678901234', '2023-07-10', 3000.00), -- Auxiliar Administrativo
-    (5, 1, 'Paulo Roberto', '56789012345', '2019-09-20', 9000.00), -- Gerente
+    (5, 1, 'Paulo Roberto', '56789012345', '2019-09-20', 9000.00), -- Gerente Projeto
     (6, 2, 'Fernanda Castro', '67890123456', '2021-04-30', 6200.00), -- Analista
     (7, 3, 'Bruno Mendes', '78901234567', '2022-06-05', 5700.00), -- Desenvolvedor
     (8, 3, 'Cláudia Ramos', '89012345678', '2023-02-18', 5800.00), -- Desenvolvedor
     (9, 4, 'Gustavo Pereira', '90123456789', '2023-08-15', 3200.00), -- Auxiliar Administrativo
-    (10, 4, 'Camila Santos', '01234567890', '2023-07-01', 3100.00); -- Auxiliar Administrativo
+    (10, 4, 'Camila Santos', '01234567890', '2023-07-01', 3100.00), -- Auxiliar Administrativo
+    (11, 5, 'Julia Maria', '31415926509', '2021-06-01', 4000.00), -- Gerente RH
+    (12, 6, 'João Guilherme', '27182818284', '2023-10-01', 1200.00), -- Estagiário
+    (13, 6, 'Luis Antônio', '14142135623', '2023-10-01', 1200.00), -- Estagiário
+    (14, 6, 'Maria Fernanda', '16180339887', '2023-10-01', 1200.00), -- Estagiário
+    (15, 1, 'Elaine Cristina', '10120230344', '2023-01-01', 9000.00), -- Gerente Projeto
+    (16, 1, 'Valentina Santos', '45454545454', '2022-10-01', 9000.00); -- Gerente Projeto
+
 
 
 INSERT INTO recursoshumanos.tb_departamentos (id_departamento, id_gerente_departamento, nm_deparmento)
 VALUES 
-    (1, 1, 'Recursos Humanos'),  -- João Silva como gerente
-    (2, 2, 'TI'),                -- Maria Oliveira como gerente
-    (3, 3, 'Desenvolvimento');    -- Carlos Sousa como gerente
+    (1, 11, 'Recursos Humanos'),  
+    (2, 15, 'TI'),                
+    (3, 16, 'Desenvolvimento');
