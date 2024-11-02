@@ -1,30 +1,27 @@
 create table recursoshumanos.tb_cargos (
-	id_cargo 	int,
-	descricao 	varchar(100),
+	id_cargo 	int 		 not null,
+	descricao 	varchar(100) not null,
 	constraint pk_id_cargo primary key (id_cargo)
 );
 
 
 create table recursoshumanos.tb_funcionarios (
-	id_funcionario 		int,
-	id_cargo 			int,
-	nome 				varchar(80),
-	cpf 				varchar(11),
-	data_contratacao 	date,
-	salario 			integer,
+	id_funcionario 		int			not null,
+	id_cargo 			int			not null,
+	nome 				varchar(80)	not null,
+	cpf 				varchar(11)	not null,
+	data_contratacao 	date		not null,
+	salario 			integer		not null,
 	constraint pk_id_funcionario primary key (id_funcionario),
 	foreign key (id_cargo) references recursoshumanos.tb_cargos(id_cargo)
 );
 
-INSERT INTO recursoshumanos.tb_funcionarios (id_tarefa, id_funcionario, data_inicio, data_fim) 
-VALUES (1, 2, 'Maria de Souza', '12345678900', '2022-08-10', 5000);
-
 alter table recursoshumanos.tb_funcionarios alter column cpf type varchar(15);
 
 create table recursoshumanos.tb_departamentos (
-	id_departamento 		int, 
-	id_gerente_departamento	int,
-	nm_deparmento 			varchar (50),
+	id_departamento 		int			 not null, 
+	id_gerente_departamento	int			 not null,
+	nm_deparmento 			varchar (50) not null,
 	constraint pk_id_departamento primary key (id_departamento),
 	foreign key (id_gerente_departamento) references recursoshumanos.tb_funcionarios(id_funcionario)
 );
