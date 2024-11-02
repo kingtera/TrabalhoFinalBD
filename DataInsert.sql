@@ -19,7 +19,8 @@ insert into admbanco.tb_acessosusuarios(id_acesso, id_funcionario, id_grupo_perm
 	(12, 12, 2);
 	
 --SCHEMA PROJETOS
-insert into projetos.tb_clientes (id_cliente, email, nm_cliente, cnpj) values
+INSERT INTO projetos.tb_clientes (id_cliente, email, nm_cliente, cnpj)
+VALUES
     (1, 'contato@empresaA.com', 'Empresa A', '11223344000155'),
     (2, 'suporte@empresaB.com', 'Empresa B', '22334455000166'),
     (3, 'adm@empresaC.com', 'Empresa C', '33445566000177'),
@@ -27,6 +28,10 @@ insert into projetos.tb_clientes (id_cliente, email, nm_cliente, cnpj) values
     (5, 'contato@empresaE.com', 'Empresa E', '55667788000199');
    
 insert into projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status) values
+
+   
+INSERT INTO projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status)
+VALUES
     (1, 1, 12, 'Sistema de Gestão', 150000.00, '2022-06-12', '2022-08-15', 'C'),
     (2, 2, 5, 'Aplicativo Mobile', 85000.00, '2023-07-01', '2023-10-20', 'C'),
     (3, 3, 8, 'E-commerce', 120000.00, '2023-12-05', '2024-12-05', 'A'),
