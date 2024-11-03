@@ -1,10 +1,10 @@
 --ROLE ADMIN => próprio usuário postgres
 
 CREATE ROLE desenvolvedor;
-CREATE ROLE gerente_projeto;
+CREATE ROLE visualizador;
 
 CREATE USER dev WITH PASSWORD 'senha';
-CREATE USER manager_dev WITH PASSWORD 'senha';
+CREATE USER viewer WITH PASSWORD 'senha';
 
 GRANT desenvolvedor TO dev;
-GRANT gerente_projeto TO manager_dev;
+GRANT visualizador TO viewer;
