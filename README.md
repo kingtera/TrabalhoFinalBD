@@ -13,4 +13,4 @@ O projeto final consiste no desenvolvimento de um banco de dados completo, com t
 - **Criação de Triggers**: Gatilhos para execução automática de ações.
 
 ## Modelo do Banco
-![Representação do banco de dados relacional do projeto](ProjetoBD.png)
+![Representação do banco de dados relacional do projeto]()
