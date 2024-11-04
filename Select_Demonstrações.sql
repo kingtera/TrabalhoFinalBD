@@ -20,6 +20,7 @@ insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descrica
     (11, 1, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05'),
     (12, 2, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
 
+
 -- Select da relação de funcionário trabalhando com determinado cliente em determinado projeto
 select f.nome as nome_funcionario, c.nm_cliente as nome_cliente, p.nm_projeto as nome_projeto
 from projetos.tb_projeto_funcionario pf
@@ -73,6 +74,7 @@ where p.status = 'A'
 group by p.id_projeto, p.nm_projeto, f.nome, p.custo_total
 order by p.id_projeto asc;
 
+
 -- Select do tipo de acesso de cada usuário
 select f.nome as nome_funcionario, c.descricao as cargo, p.descricao as permissao
 from recursoshumanos.tb_funcionarios f
@@ -84,20 +86,23 @@ order by f.nome;
 -- Demonstrar usuário
 -- USER dev WITH PASSWORD 'senha';
 insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim) values
-    (13, 1, 6, 'Entrega do projeto final de BD', 'C', '2024-10-01', '2024-11-05');
+    (13, 1, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
     
+update projetos.tb_tarefas set status = 'C' where id_tarefa = 13;
+   
 delete from projetos.tb_tarefas where id_tarefa = 13;
+
+select * from projeto.tb_tarefas where id_tarefa = 13;
 
 -- USER viewer WITH PASSWORD 'senha';
 insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim) values
-    (13, 2, 6, 'Entrega do projeto final de BD', 'C', '2024-10-01', '2024-11-05');
+    (14, 2, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
 
+update projetos.tb_tarefas set status = 'C' where id_tarefa = 14;
 
+delete from projetos.tb_tarefas where id_tarefa = 14;
 
-
-
-
-
+select * from projetos.tb_tarefas where id_tarefa = 13;
 
 
 
