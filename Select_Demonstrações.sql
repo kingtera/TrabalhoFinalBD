@@ -19,7 +19,9 @@ insert into projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm
 insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim) values
     (11, 1, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05'),
     (12, 2, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
-   
+
+
+-- Select da relação de funcionário trabalhando com determinado cliente em determinado projeto
 select f.nome as nome_funcionario, c.nm_cliente as nome_cliente, p.nm_projeto as nome_projeto
 from projetos.tb_projeto_funcionario pf
 join recursoshumanos.tb_funcionarios f on pf.id_funcionario = f.id_funcionario
@@ -53,13 +55,6 @@ join recursoshumanos.tb_funcionarios f on p.id_funcionario = f.id_funcionario
 where date_trunc('month', p.data_pagamento) = date_trunc('month', current_date) + interval '1 month'
 group by f.id_funcionario, f.nome, f.cpf, p.data_pagamento;
 
-select f.nome as nome_funcionario, c.descricao as cargo, p.descricao as permissao
-from recursoshumanos.tb_funcionarios f
-join recursoshumanos.tb_cargos c on f.id_cargo = c.id_cargo
-join admbanco.tb_acessosusuarios au on f.id_funcionario = au.id_funcionario
-join admbanco.tb_permissoes p on au.id_grupo_permissao = p.id_permissao
-order by f.nome;
-
 /* Seleção dos projetos ativos mostrando os gastos que houve com o projeto na tb_custos_projetos
  * e os pagamentos que foram registrados de tarefas que são relacionadas à aquele projeto na tb_gastos
  * por último, subtrair esse gasto do custo_total do projeto estabelecido na tb_projetos
@@ -80,8 +75,34 @@ group by p.id_projeto, p.nm_projeto, f.nome, p.custo_total
 order by p.id_projeto asc;
 
 
+-- Select do tipo de acesso de cada usuário
+select f.nome as nome_funcionario, c.descricao as cargo, p.descricao as permissao
+from recursoshumanos.tb_funcionarios f
+join recursoshumanos.tb_cargos c on f.id_cargo = c.id_cargo
+join admbanco.tb_acessosusuarios au on f.id_funcionario = au.id_funcionario
+join admbanco.tb_permissoes p on au.id_grupo_permissao = p.id_permissao
+order by f.nome;
 
+-- Demonstrar usuário
+-- USER dev WITH PASSWORD 'senha';
+insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim) values
+    (13, 1, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
+    
+update projetos.tb_tarefas set status = 'C' where id_tarefa = 13;
+   
+delete from projetos.tb_tarefas where id_tarefa = 13;
 
+select * from projeto.tb_tarefas where id_tarefa = 13;
+
+-- USER viewer WITH PASSWORD 'senha';
+insert into projetos.tb_tarefas (id_tarefa, id_funcionario, id_projeto, descricao, status, data_inicio, data_fim) values
+    (14, 2, 6, 'Entrega do projeto final de BD', 'A', '2024-10-01', '2024-11-05');
+
+update projetos.tb_tarefas set status = 'C' where id_tarefa = 14;
+
+delete from projetos.tb_tarefas where id_tarefa = 14;
+
+select * from projetos.tb_tarefas where id_tarefa = 13;
 
 
 

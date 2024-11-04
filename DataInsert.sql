@@ -27,9 +27,6 @@ VALUES
     (4, 'projetos@empresaD.com', 'Empresa D', '44556677000188'),
     (5, 'contato@empresaE.com', 'Empresa E', '55667788000199');
    
-insert into projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status) values
-
-   
 INSERT INTO projetos.tb_projetos (id_projeto, id_cliente, id_gerente_projeto, nm_projeto, custo_total, data_inicio, data_fim, status)
 VALUES
     (1, 1, 12, 'Sistema de Gestão', 150000.00, '2022-06-12', '2022-08-15', 'C'),
@@ -98,5 +95,5 @@ insert into recursoshumanos.tb_departamentos (id_departamento, id_gerente_depart
     (3, 12, 'Desenvolvimento');    -- Paula Roberta como gerente
     
 --SCHEMA FINANCEIRO
--- insert feito pela stored procedure
+-- insert feito pela stored procedure e funções
     
